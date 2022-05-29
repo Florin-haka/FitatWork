@@ -1,9 +1,11 @@
 package de.info3.navigation.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import de.info3.navigation.MainActivityTrackingApp;
 import de.info3.navigation.R;
 import de.info3.navigation.databinding.FragmentDashboardBinding;
 
@@ -27,6 +30,14 @@ public class DashboardFragment extends Fragment {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        Button trackingButton =binding.buttonTracking;
+        trackingButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent=new Intent(getContext(), MainActivityTrackingApp.class);
+                startActivity(intent);
+            }
+        });
 
         final TextView textView = binding.textDashboard;
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {

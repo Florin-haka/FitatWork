@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import de.info3.navigation.MainActivityTrackingApp;
 import de.info3.navigation.Profile;
 import de.info3.navigation.R;
 import de.info3.navigation.Training;
@@ -54,9 +55,10 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), Training.class); //Um den Intent korrekt zu befüllen, ist anstelle von "MainActivity.this" "getContext()" einzugeben
                 startActivity(intent);
-                button.setText("Test");
+                button.setText("Test"); //!
             }
         });
+
 
     }
 
