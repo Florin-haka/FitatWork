@@ -31,6 +31,7 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         Button trackingButton =binding.buttonTracking;
+
         trackingButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -48,6 +49,7 @@ public class DashboardFragment extends Fragment {
         });
         return root;
     }
+
 
     @Override
     public void onDestroyView() {

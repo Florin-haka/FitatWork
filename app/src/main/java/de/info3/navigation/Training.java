@@ -1,6 +1,7 @@
 package de.info3.navigation;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
 import java.util.Locale;
 
 public class Training extends AppCompatActivity {
@@ -50,6 +52,17 @@ public class Training extends AppCompatActivity {
         Context c = getApplicationContext();
         int id = c.getResources().getIdentifier("drawable/"+"u2", null, c.getPackageName());
         ((ImageView)findViewById(R.id.imageView)).setImageResource(id);
+
+        AppDatabase db = Room.databaseBuilder(c,
+                AppDatabase.class,
+                "fitAtWorkDatabase").allowMainThreadQueries().build();
+        ExerciceDao exerciceDao = db.exerciceDao();
+        List<Exercice> exerciceList =exerciceDao.getExercicesWithDifficulty(3);
+        Exercice exercice=exerciceList.get(0);
+        String titel=exercice.getTitle();
+
+        TextView textViewTestTitle=findViewById(R.id.text_view_titel_test);
+        textViewTestTitle.setText(titel);
 
         ButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override

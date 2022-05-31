@@ -11,7 +11,7 @@ public class Profile {
     @ColumnInfo
     private String userName;
     @ColumnInfo
-    private int levelPoints;
+    private int levelPoints; //100 Punkte: 0-33=1,33-66=2,66-100=3
     @ColumnInfo
     private int bonusPoints;
     @ColumnInfo
