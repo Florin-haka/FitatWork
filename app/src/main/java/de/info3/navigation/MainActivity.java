@@ -4,6 +4,7 @@ package de.info3.navigation;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -20,6 +21,8 @@ import java.util.List;
 import de.info3.navigation.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     private ActivityMainBinding binding;
 
@@ -61,5 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
 }

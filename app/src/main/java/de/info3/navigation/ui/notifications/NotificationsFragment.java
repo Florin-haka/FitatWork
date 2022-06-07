@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import de.info3.navigation.MainActivity;
+import de.info3.navigation.PickExercice;
 import de.info3.navigation.Profile;
 import de.info3.navigation.R;
 import de.info3.navigation.Training;

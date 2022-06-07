@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class Training extends AppCompatActivity {
     private ImageButton ButtonPause;
     private ImageButton ButtonBack;
     private android.os.CountDownTimer CountDownTimer;
+    private Button ButtonTest;
 
     private boolean TimerRunning;
 
@@ -47,6 +49,8 @@ public class Training extends AppCompatActivity {
         ButtonReset.setVisibility(View.GONE);
 
         ButtonBack = findViewById(R.id.button_back);
+
+
 
 
         Context c = getApplicationContext();
@@ -109,6 +113,15 @@ public class Training extends AppCompatActivity {
             }
         });
 
+        /*ButtonTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openacitivity_pick();
+            }
+        });*/
+
+
     }
 
     private void startTimer() {
@@ -156,8 +169,15 @@ public class Training extends AppCompatActivity {
         Timer_text_view.setText(timeLeftFormatted);
     }
 
+
+
     public void openacitivity_main() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void openacitivity_pick() {
+        Intent intent = new Intent(this, PickExercice.class);
         startActivity(intent);
     }
 
