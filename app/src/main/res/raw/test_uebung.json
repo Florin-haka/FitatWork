@@ -1,0 +1,17 @@
+{
+  "Title": "TestÜbung",
+  "TimeInMs": "60000",
+  "BodyPart": "010010",
+  "Level": "3",
+  "BonusPoints": "5",
+  "LevelPoints": "5",
+  "PictureLink": "/res/picture_test",
+  "ShortDescription": "Mache eine Übung.",
+  "LongDescription": "Mache die Übung so und so",
+  "SucessQuestion": "Wieviele Durchläufe hast du geschafft?",
+  "Answer1": "0-2",
+  "Answer2": "3-4",
+  "Answer3": "5-6",
+  "Answer4": "7-8",
+  "Answer5": "9-10"
+}
