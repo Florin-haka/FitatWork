@@ -1,9 +1,7 @@
 package de.info3.navigation;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -13,27 +11,34 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
 import java.util.List;
 import java.util.Locale;
 
 public class Training extends AppCompatActivity {
 
-    private static final long START_TIME_IN_MILLIS = 600000;
-
+    private long startTimeInMs;
     private TextView Timer_text_view;
     private ImageButton ButtonStart;
     private ImageButton ButtonReset;
     private ImageButton ButtonPause;
     private ImageButton ButtonBack;
     private android.os.CountDownTimer CountDownTimer;
-    private Button ButtonTest;
-
     private boolean TimerRunning;
+    private long TimeLeftInMillis = startTimeInMs;
+    public ImageButton ButtonInfo;
+    long time;
 
-    private long TimeLeftInMillis = START_TIME_IN_MILLIS;
+    private Exercice excercise1;
+    String longdecription;
+
+    int receiveValue;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training);
 
@@ -43,6 +48,8 @@ public class Training extends AppCompatActivity {
         ButtonPause = findViewById(R.id.pause_button);
         ButtonPause.setVisibility(View.GONE);
 
+        ButtonInfo = findViewById(R.id.button_Info);
+
         ButtonStart = findViewById(R.id.play_button);
 
         ButtonReset = findViewById(R.id.reset_button);
@@ -50,25 +57,37 @@ public class Training extends AppCompatActivity {
 
         ButtonBack = findViewById(R.id.button_back);
 
-
-
+        receiveValue = getIntent().getIntExtra("id", 0);
 
         Context c = getApplicationContext();
-        int id = c.getResources().getIdentifier("drawable/"+"u2", null, c.getPackageName());
-        ((ImageView)findViewById(R.id.imageView)).setImageResource(id);
-
         AppDatabase db = Room.databaseBuilder(c,
                 AppDatabase.class,
                 "fitAtWorkDatabase").allowMainThreadQueries().build();
         ExerciceDao exerciceDao = db.exerciceDao();
-        List<Exercice> exerciceList =exerciceDao.getExercicesWithDifficulty(3);
-        Exercice exercice=exerciceList.get(0);
-        String titel=exercice.getTitle();
 
-        TextView textViewTestTitle=findViewById(R.id.text_view_titel_test);
-        textViewTestTitle.setText(titel);
 
-        ButtonStart.setOnClickListener(new View.OnClickListener() {
+        if (receiveValue > 0) {  //checkt das recivevalue nicht 0 ist und lädt dann auf grundlage des übergebenen id werts die gewollten dinge aus der datenbank
+
+            this.excercise1 = exerciceDao.getExcerciseById(receiveValue);
+
+            String picture1 = excercise1.getPictureLink();  //Lädt bildpfad zur liste exercice
+
+            String titel = excercise1.getTitle();
+
+            TextView TextViewtestTitel = findViewById(R.id.textViewtitel);
+            TextViewtestTitel.setText(titel);
+
+            this.time = excercise1.getTimeInMs();
+            this.startTimeInMs=this.time;
+            this.TimeLeftInMillis=this.startTimeInMs;
+            longdecription = excercise1.getLongDecription();
+
+            int id11 = c.getResources().getIdentifier(picture1, "drawable", c.getPackageName());
+            ((ImageView) findViewById(R.id.imageView)).setImageResource(id11);
+
+        }
+
+        ButtonStart.setOnClickListener(new View.OnClickListener() {  //buttons ermöglichen kontrolle über den angezeigten timer
             @Override
             public void onClick(View v) {
                 if (TimerRunning) {
@@ -86,7 +105,7 @@ public class Training extends AppCompatActivity {
         ButtonPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TimerRunning){
+                if (TimerRunning) {
                     pauseTimer();
                     ButtonPause.setVisibility(View.GONE);
 
@@ -101,25 +120,53 @@ public class Training extends AppCompatActivity {
             }
         });
 
+
+        Button buttonSkipp=findViewById(R.id.button_skip);
+        buttonSkipp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toNextActivity();
+            }
+        });
+
         updateCountDownText();
 
         ButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TimerRunning){
+                if (TimerRunning) {
                     pauseTimer();
                 }
                 openacitivity_main();
             }
         });
 
-        /*ButtonTest.setOnClickListener(new View.OnClickListener() {
+        ButtonInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (TimerRunning) {
+                    pauseTimer();
+                    ButtonPause.setVisibility(View.GONE);
 
-                openacitivity_pick();
+                }
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Training.this);
+
+                builder.setMessage(longdecription) //Strings in Ressourcen auslagern
+                        .setTitle("Das musst du machen:");
+
+
+                builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
             }
-        });*/
+        });
 
 
     }
@@ -134,10 +181,8 @@ public class Training extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                TimerRunning = false;
-                ButtonStart.setVisibility(View.GONE);
-                ButtonStart.setVisibility(View.INVISIBLE);
-                ButtonReset.setVisibility(View.VISIBLE);
+                toNextActivity();
+
             }
         }.start();
 
@@ -154,7 +199,7 @@ public class Training extends AppCompatActivity {
     }
 
     private void resetTimer() {
-        TimeLeftInMillis = START_TIME_IN_MILLIS;
+        TimeLeftInMillis = startTimeInMs;
         updateCountDownText();
         ButtonReset.setVisibility(View.INVISIBLE);
         ButtonStart.setVisibility(View.VISIBLE);
@@ -169,15 +214,21 @@ public class Training extends AppCompatActivity {
         Timer_text_view.setText(timeLeftFormatted);
     }
 
-
-
-    public void openacitivity_main() {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void toNextActivity(){
+        TimerRunning = false;
+        ButtonStart.setVisibility(View.GONE);
+        ButtonStart.setVisibility(View.INVISIBLE);
+        ButtonReset.setVisibility(View.VISIBLE);
+        Bundle bundle = new Bundle();
+        bundle.putInt("followingExercice", 3);
+        bundle.putInt("Exercice3", excercise1.getId());
+        Intent intent = new Intent(Training.this, Evaluation_Activity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
-    public void openacitivity_pick() {
-        Intent intent = new Intent(this, PickExercice.class);
+    public void openacitivity_main() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 

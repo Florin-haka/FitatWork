@@ -14,14 +14,14 @@ import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+//teil des tracking ähnlich zu letztm semester
+
 public class SelectModeActivity extends AppCompatActivity {
 
     ListView l;
     String modes[]
-            = { "Fuß", "Fahrrad",
-            "ÖPNV", "E-Scooter",
-            "MIV-Fahrer", "MIV-Mitfahrer",
-            "Sonstiges"};
+            = { "Fuß", "Fahrrad"} //hier wurden die andern Optionen entfernt, schließlich soll Sport gemacht werden xD
+            ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

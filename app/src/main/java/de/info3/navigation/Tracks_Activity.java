@@ -38,6 +38,8 @@ import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+//teil des tracking ähnlich zu letztem semester
+
 public class Tracks_Activity extends AppCompatActivity {
 
     private DB_Helper database = new DB_Helper(Tracks_Activity.this);

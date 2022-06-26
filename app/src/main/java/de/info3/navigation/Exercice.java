@@ -6,6 +6,9 @@ import androidx.room.PrimaryKey;
 
 import java.util.List;
 
+
+//definiert eigenschaften eriner exercice
+
 @Entity
 public class Exercice {
     @PrimaryKey

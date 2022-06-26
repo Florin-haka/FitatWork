@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+//Definiert Dalytip eigenschaften
+
 @Entity
 public class DailyTip {
     @PrimaryKey

@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">Navigation</string>
+    <string name="app_name">breaCtive</string>
     <string name="title_home">Kalender</string>
     /das war mal home
     <string name="title_dashboard">Home</string>
     /das war mal dashboard
     <string name="title_notifications">Einstellungen</string>
+    <string name="title_evaluation">Auswertung</string>
     <string name="access_token">pk.eyJ1IjoiYmF0YTEwMTIiLCJhIjoiY2t3bm9yMGxtMGtvazJwcXQyczJ6aWZ0cCJ9.2IFXIdaCEWpHUHdXpAr-NQ</string>
 </resources>

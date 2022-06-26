@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey;
 
 import java.util.Calendar;
 
+//wird nicht verwendet
+
 @Entity
 public class Date {
     @PrimaryKey

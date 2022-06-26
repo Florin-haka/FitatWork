@@ -11,7 +11,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="104dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="60dp"
         android:background="@android:drawable/ic_media_play"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +22,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="104dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="60dp"
         android:background="@android:drawable/ic_media_pause"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,42 +32,43 @@
         android:id="@+id/reset_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="88dp"
+        android:layout_marginEnd="104dp"
         android:layout_marginBottom="60dp"
         android:background="@android:drawable/ic_popup_sync"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="331dp"
-        android:layout_height="405dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="89dp"
+        android:layout_width="387dp"
+        android:layout_height="486dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/button_Info"
         android:layout_width="48dp"
         android:layout_height="45dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="40dp"
-        android:background="@android:drawable/ic_menu_info_details"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/mapbox_info_bg_selector"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/timerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="148dp"
+        android:layout_marginBottom="72dp"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
+        />
 
     <ImageButton
         android:id="@+id/button_back"
@@ -77,24 +78,52 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_revert" />
+        app:srcCompat="@drawable/mapbox_ic_arrow_back" />
 
     <TextView
-        android:id="@+id/text_view_titel_test"
+        android:id="@+id/textViewinfo"
+        android:layout_width="288dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="132dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewtitel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="16dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_back" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="434dp"
+        android:layout_height="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewtitel"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="136dp"
-        android:text="Train-Test"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="76dp"
+        android:text="Überspringen"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/textViewinfo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

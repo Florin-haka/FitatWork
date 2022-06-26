@@ -1,65 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
+    tools:context=".ui.notifications.NotificationsFragment"
+    >
+
+
+
+
+
 
     <TextView
-        android:id="@+id/text_notifications"
+        android:id="@+id/settings_title"
+        android:layout_width="180dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="50dp"
+        android:text="Einstellungen"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/title_profile"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="@+id/title_profile"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_bonuspoints_static" />
+
+    <TextView
+        android:id="@+id/text_view_bonuspoints_static"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="30dp"
+        android:text="Bonuspunkte: "
+        android:textAlignment="viewStart"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_level_static" />
+
+    <TextView
+        android:id="@+id/txt_view_bonuspoints_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="-1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/text_view_level_static"
+        app:layout_constraintTop_toTopOf="@+id/text_view_bonuspoints_static" />
+
+    <TextView
+        android:id="@+id/title_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:text="Guten Tag"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_profil"
-        android:layout_width="400dp"
-        android:layout_height="100dp"
-        android:text="Profil"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="62dp"
-        android:layout_marginBottom="450dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+        android:id="@+id/show_daily_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginRight="200dp"
+        android:text="Daily Tip anzeigen"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_title" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="424dp"
+        android:layout_height="47dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_title" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="424dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_title" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="372dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="18dp"
+        android:text="dein Name"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/title_profile"
+        app:layout_constraintStart_toStartOf="@+id/title_profile"
+        app:layout_constraintTop_toBottomOf="@+id/title_profile" />
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="115dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="11dp"
+        android:background="@android:drawable/ic_menu_myplaces"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name" />
+
+    <TextView
+        android:id="@+id/text_view_level_static"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="8dp"
+        android:text="Dein Level: "
+        android:textAlignment="viewStart"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name" />
+
+    <TextView
+        android:id="@+id/txt_vie_level_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="11dp"
+        android:text="-1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/text_view_level_static"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
     <Switch
         android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Self Destruct"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="208dp"
-        android:layout_marginBottom="300dp"
-        android:layout_marginLeft="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:text="Arme"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
 
     <Switch
         android:id="@+id/switch2"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="16dp"
+        android:text="Beine"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/switch1"
+        app:layout_constraintTop_toBottomOf="@+id/change_name" />
+
+    <ImageButton
+        android:id="@+id/button_Info_bodyparts"
+        android:layout_width="48dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/mapbox_info_bg_selector"
+        app:layout_constraintStart_toEndOf="@+id/show_daily_tip"
+        app:layout_constraintTop_toBottomOf="@+id/button_reset" />
+
+    <Button
+        android:id="@+id/button_ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Daily Tip"
-        tools:layout_editor_absoluteX="240dp"
-        tools:layout_editor_absoluteY="209dp"
-        android:layout_marginBottom="300dp"
-        android:layout_marginRight="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="#262F30"
+        android:text="OK"
+        android:textColor="#00FFFF"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
+
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:text="Brust"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch5" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="84dp"
+        android:text="Rücken"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/switch5"
+        app:layout_constraintTop_toBottomOf="@+id/switch2" />
+
+    <Switch
+        android:id="@+id/switch5"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="Bauch"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/eidt_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="neuen Namen eingeben..."
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_ok" />
+
+    <Button
+        android:id="@+id/change_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="#262F30"
+        android:text="Name ändern"
+        android:textColor="#00FFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_title" />
+
+
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="96dp"
+        android:text="reset"
+        app:layout_constraintStart_toEndOf="@+id/settings_title"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name"
+        android:backgroundTint="#D50000"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

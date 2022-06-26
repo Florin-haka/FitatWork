@@ -43,6 +43,8 @@ import java.util.Calendar;
 import java.util.List;
 
 
+//ermöglicht tracking von fuß und radwegen sehr ähnlich zu projekt von letztem semester
+
 public class MainActivityTrackingApp extends AppCompatActivity  {
 
     private MapView mapView;
@@ -52,9 +54,6 @@ public class MainActivityTrackingApp extends AppCompatActivity  {
 
 
     private MapboxMap map;
-    //private LocationEngine locationEngine;
-    //private LocationLayerPlugin locationLayerPlugin;
-    //private Location originLocation;
     private LocationComponent locationComponent;
     private LocationManager locationManager;
     private android.location.LocationListener locationListener;

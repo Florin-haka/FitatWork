@@ -11,6 +11,9 @@ import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
 
+
+//ist datenbank für die tracks aus der Tracing activity
+
 public class DB_Helper extends SQLiteOpenHelper {
 
     //private static final String Tag = "DBHelper";
